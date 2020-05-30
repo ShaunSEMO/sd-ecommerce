@@ -89,3 +89,10 @@ Route::post('/$d_3c0mm3rc3/contacts/save/social_link', 'DashboardController@save
 Route::get('/$d_3c0mm3rc3/contacts/{contact}/edit/social_link', 'DashboardController@editSocialLink')->name('editSocialLink');
 Route::put('/$d_3c0mm3rc3/contacts/{contact}/update/social_link', 'DashboardController@updateSocialLink')->name('updateSocialLink');
 Route::delete('/$d_3c0mm3rc3/contacts/{contact}/delete/social_link', 'DashboardController@deleteSocialLink')->name('deleteSocialLink');
+
+    // SHOP
+Route::get('/$d_3c0mm3rc3/shop', 'DashboardController@shop')->name('dashboardShop');
+Route::get('/$d_3c0mm3rc3/shop/category/add', 'DashboardController@addCategory')->name('addCategory');
+Route::post('/$d_3c0mm3rc3/category/save', 'DashboardController@saveCategory')->name('saveCategory');
+Route::get('/$d_3c0mm3rc3/shop/item/add', 'DashboardController@addItem')->name('addItem');
+Route::post('/$d_3c0mm3rc3/shop/item/save', 'DashboardController@saveItem')->name('saveItem');

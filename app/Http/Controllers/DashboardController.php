@@ -9,6 +9,8 @@ use App\Stats;
 use App\TeamMember;
 use App\Contact;
 use App\Social_link;
+use App\Item;
+use App\Category;
 use DB;
 
 use Illuminate\Http\Request;
@@ -234,5 +236,47 @@ class DashboardController extends Controller
         $social_link = Social_link::find($id);
         $social_link->delete();
         return redirect('/$d_3c0mm3rc3/contacts');
+    }
+
+    /*--------
+    Shop CRUD 
+    --------*/
+    public function shop() {
+        $categories = Category::get();
+
+        return view('dashboard.shop', compact(['categories']));
+    }
+
+    public function addCategory() {
+        return view('dashboard.shop.addCategory');
+    }
+
+    public function saveCategory(Request $request) {
+        $category = new Category;
+        $category->icon = $request->input('icon');
+        $category->title = $request->input('title');
+        $category->save();
+
+        return redirect('/$d_3c0mm3rc3/shop');
+
+    }
+
+    public function addItem() {
+        $categories = Category::get();
+
+
+        return view('dashboard.shop.addItem', compact(['categories']));
+    }
+
+    public function saveItem(Request $request) {
+        $item = new Item;
+        $item->name = $request->input('name');
+        $item->price = $request->input('orice');
+        $item->desc = $request->input('desc');
+        $item->color = $request->input('color');
+        $item->tag = $request->input('tag');
+        $item->save();
+
+        return redirect('/$d_3c0mm3rc3/shop');
     }
 }
