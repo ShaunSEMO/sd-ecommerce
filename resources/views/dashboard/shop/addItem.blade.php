@@ -11,24 +11,27 @@
                 <h5 class="card-header">Add Category</h5>
                 <div class="card-body">
                     <div class="container">
-                        {!! Form::open(['action' => 'DashboardController@saveItem', 'files' => true, 'method' => 'post', 'enctype' => 'multipart/form-data', 'class' => 'hidden hidden-form']) !!}
-
-                            {{ Form::text('name', '' , ['class' => 'form-control']) }}
+                        <form method="POST" enctype="multipart/form-data" action="{{ url('/$d_3c0mm3rc3/shop/item/save') }}">
+                            {{ csrf_field() }}
+                            <input type="text" name="name" class="form-control" placeholder="Item name">
                             <br>
-                            {{ Form::selectRange('price', 0, 10000) }}
+                            <input type="number" name="price" class="form-control" placeholder="Item price">
                             <br>
-                            {{ Form::textArea('desc', '', ['id' => 'summary-ckeditor','class' => 'form-control', 'placeholder' => 'About...']) }}
+                            <textarea name="desc" cols="30" rows="10" class="form-control" placeholder="Item description"></textarea>
                             <br>
-                            {{ Form::text('color', '' , ['class' => 'form-control']) }}
+                            <input type="text" name="color" class="form-control" placeholder="Item color">
                             <br>
-                            {{ Form::text('tag', '' , ['class' => 'form-control']) }}
+                            <input type="text" name="tag" class="form-control" placeholder="Item tag, e.g. Trending, Hot, New, Sale, etc">
                             <br>
-                            {{-- {{ Form::select('category', $category_arr) }} --}}
-
+                            <div class="form-group">
+                                @foreach ($categories as $category)
+                                    <input type="radio" name="category" value="{{$category->title}}"> <label for="{{$category->title}}">{{$category->title}}</label><br>
+                                @endforeach
+                            </div>
+                            <br>
+                            <button class="btn btn-primary" type="submit">Save</button>
                             
-                            {{Form::hidden('_method', 'PUT')}}
-                            {{ Form::submit('Update', ['class' => 'btn btn-primary']) }}
-                        {!! Form::close() !!}
+                        </form>
                     </div>
                 </div>
               </div>

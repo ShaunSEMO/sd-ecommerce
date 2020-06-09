@@ -264,14 +264,17 @@ class DashboardController extends Controller
     public function addItem() {
         $categories = Category::get();
 
-
         return view('dashboard.shop.addItem', compact(['categories']));
     }
 
     public function saveItem(Request $request) {
         $item = new Item;
+
+        $input_category = $request->input('category');
+        $category = DB::table('categories')->where('title', $input_category)->get()->first();
+        $item->category_id = $category->id;
         $item->name = $request->input('name');
-        $item->price = $request->input('orice');
+        $item->price = $request->input('price');
         $item->desc = $request->input('desc');
         $item->color = $request->input('color');
         $item->tag = $request->input('tag');

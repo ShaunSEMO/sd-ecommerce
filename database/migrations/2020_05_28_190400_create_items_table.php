@@ -17,7 +17,7 @@ class CreateItemsTable extends Migration
             $table->id();
             $table->integer('category_id');
             $table->text('name');
-            $table->decimal('price', 8, 2);
+            $table->decimal('price', 10, 2);
             $table->longText('desc');
             $table->string('color');
             $table->string('tag');
