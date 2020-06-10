@@ -95,4 +95,5 @@ Route::get('/$d_3c0mm3rc3/shop', 'DashboardController@shop')->name('dashboardSho
 Route::get('/$d_3c0mm3rc3/shop/category/add', 'DashboardController@addCategory')->name('addCategory');
 Route::post('/$d_3c0mm3rc3/category/save', 'DashboardController@saveCategory')->name('saveCategory');
 Route::get('/$d_3c0mm3rc3/shop/item/add', 'DashboardController@addItem')->name('addItem');
-Route::post('/$d_3c0mm3rc3/shop/item/save', 'DashboardController@saveItem')->name('saveItem');
+Route::post('/$d_3c0mm3rc3/shop/item/saveItem', 'DashboardController@saveItem')->name('saveItem');
+Route::post('/$d_3c0mm3rc3/shop/item/saveItemImages', 'DashboardController@saveItemImages')->name('saveItemImages');

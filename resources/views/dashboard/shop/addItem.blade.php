@@ -8,11 +8,12 @@
         </div>
         <div class="col-md-10 dashboard-content">
             <div class="card">
-                <h5 class="card-header">Add Category</h5>
+                <h5 class="card-header">Add Items</h5>
                 <div class="card-body">
                     <div class="container">
-                        <form method="POST" enctype="multipart/form-data" action="{{ url('/$d_3c0mm3rc3/shop/item/save') }}">
+                        <form method="POST" enctype="multipart/form-data" action="{{ url('/$d_3c0mm3rc3/shop/item/saveItem') }}">
                             {{ csrf_field() }}
+
                             <input type="text" name="name" class="form-control" placeholder="Item name">
                             <br>
                             <input type="number" name="price" class="form-control" placeholder="Item price">
@@ -29,7 +30,7 @@
                                 @endforeach
                             </div>
                             <br>
-                            <button class="btn btn-primary" type="submit">Save</button>
+                            <button class="btn btn-primary" type="submit">Next</button>
                             
                         </form>
                     </div>

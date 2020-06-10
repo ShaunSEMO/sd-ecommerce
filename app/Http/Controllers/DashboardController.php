@@ -10,6 +10,7 @@ use App\TeamMember;
 use App\Contact;
 use App\Social_link;
 use App\Item;
+use App\Item_image;
 use App\Category;
 use DB;
 
@@ -268,17 +269,47 @@ class DashboardController extends Controller
     }
 
     public function saveItem(Request $request) {
-        $item = new Item;
 
-        $input_category = $request->input('category');
+        $item_category = $request->input('category');
+        $item_name = $request->input('name');
+        $item_price = $request->input('price');
+        $item_desc = $request->input('desc');
+        $item_color = $request->input('color');
+        $item_tag = $request->input('tag');
+
+        return view('dashboard.shop.addItemImgs', compact(['item_category', 'item_name', 'item_price', 'item_desc', 'item_color', 'item_tag']));
+    }
+
+    public function saveItemImages(Request $request) {
+        $item = new Item;
+        $input_category = $request->input('item_category');
         $category = DB::table('categories')->where('title', $input_category)->get()->first();
         $item->category_id = $category->id;
-        $item->name = $request->input('name');
-        $item->price = $request->input('price');
-        $item->desc = $request->input('desc');
-        $item->color = $request->input('color');
-        $item->tag = $request->input('tag');
+        $item->name = $request->input('item_name');
+        $item->price = $request->input('item_price');
+        $item->desc = $request->input('item_desc');
+        $item->color = $request->input('item_color');
+        $item->tag = $request->input('item_tag');
         $item->save();
+
+        $images = $request->file('image');
+        if (count($images)>0) {
+
+            foreach($images as $image):
+
+                $item_image = new Item_image;
+                $filenameWithExt = $image->getClientOriginalName();
+                $path = $image->storeAs('public/shop/'.$item->name, $filenameWithExt);
+                $item_image->image = 'storage/shop/'.$item->name.'/'.$image->getClientOriginalName();
+                $item_image->item_id = $item->id;
+                $item_image->save();
+
+            endforeach;
+        }
+         else {
+            return redirect('/$d_3c0mm3rc3/shop');
+        }
+
 
         return redirect('/$d_3c0mm3rc3/shop');
     }
