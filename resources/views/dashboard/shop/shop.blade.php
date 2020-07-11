@@ -22,11 +22,11 @@
                     @foreach ($categories as $category)
                         <div class="card">
                             <div class="card-header" id="{{ 'heading'.$category->id }}">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="{{ '#collapse'.$category->id }}" aria-expanded="true" aria-controls="{{ 'collapse'.$category->id }}">
-                                    {{ $category->title }}
-                                </button>
-                            </h5>
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="{{ '#collapse'.$category->id }}" aria-expanded="true" aria-controls="{{ 'collapse'.$category->id }}">
+                                        {{ $category->title }}
+                                    </button>
+                                </h5>
                             </div>
                         
                             <div id="{{ 'collapse'.$category->id }}" class="collapse" aria-labelledby="{{ 'heading'.$category->id }}" data-parent="#accordionExample">
@@ -53,6 +53,13 @@
                                             <p>{{ $item->desc }}</p>
                                             <h5>{{ $item->color }}</h5>
                                             <small>{{ $item->tag }}</small>
+                                            <br>
+                                            <br>
+                                            <a class="btn btn-outline-warning" href="{{ url('/$d_3c0mm3rc3/shop/'.$item->id.'/edit') }}">Edit</a>
+                                            {!! Form::open(['action' => ['DashboardController@deleteItem', $item->id], 'method' => 'POST']) !!}
+                                                {{ Form::hidden('_method', 'DELETE') }}
+                                                {{ Form::submit('Delete', ['class' => 'btn btn-outline-danger'])}}
+                                            {!!Form::close()!!}
                                         </div>
                                     @endforeach
                                 </div>
