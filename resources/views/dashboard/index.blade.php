@@ -2,7 +2,7 @@
 
 @section('content')
   
-    <div class="row">
+    <div class="row container-fluid">
         <div class="col-md-2 side-menu" style="background-color:#A4A4AA; height: 100%;">
             @include('dashboard.sideMenu')
         </div>
