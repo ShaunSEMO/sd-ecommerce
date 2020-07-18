@@ -12,11 +12,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 -----------------------
-| Universal Dashboard |
+| Universal Dasboard |
 -----------------------
 | Development Credenetials
 | username: tshego@swaydev.co.za
-| pass: m3zum0_130y
+| pass: m3zum()_13()y
 -----------------------
 */
 
@@ -89,3 +89,17 @@ Route::post('/$d_3c0mm3rc3/contacts/save/social_link', 'DashboardController@save
 Route::get('/$d_3c0mm3rc3/contacts/{contact}/edit/social_link', 'DashboardController@editSocialLink')->name('editSocialLink');
 Route::put('/$d_3c0mm3rc3/contacts/{contact}/update/social_link', 'DashboardController@updateSocialLink')->name('updateSocialLink');
 Route::delete('/$d_3c0mm3rc3/contacts/{contact}/delete/social_link', 'DashboardController@deleteSocialLink')->name('deleteSocialLink');
+
+    // SHOP
+Route::get('/$d_3c0mm3rc3/shop', 'DashboardController@shop')->name('dashboardShop');
+Route::get('/$d_3c0mm3rc3/shop/category/add', 'DashboardController@addCategory')->name('addCategory');
+Route::post('/$d_3c0mm3rc3/category/save', 'DashboardController@saveCategory')->name('saveCategory');
+Route::get('/$d_3c0mm3rc3/shop/item/add', 'DashboardController@addItem')->name('addItem');
+Route::post('/$d_3c0mm3rc3/shop/item/saveItem', 'DashboardController@saveItem')->name('saveItem');
+Route::post('/$d_3c0mm3rc3/shop/item/saveItemImages', 'DashboardController@saveItemImages')->name('saveItemImages');
+Route::get('/$d_3c0mm3rc3/shop/{item}/edit', 'DashboardController@editItem')->name('editItem');
+Route::post('/$d_3c0mm3rc3/shop/{item}/updateItem', 'DashboardController@updateItem')->name('updateItem');
+Route::delete('/$d_3c0mm3rc3/shop/{item}/deleteImage', 'DashboardController@deleteItemImage')->name('deleteItemImage');
+Route::post('/$d_3c0mm3rc3/shop/{item}/saveItemEditImages', 'DashboardController@saveItemEditImages')->name('saveItemEditImages');
+Route::post('/$d_3c0mm3rc3/shop/{item}/updateItemAll', 'DashboardController@updateItemAll')->name('updateItemAll');
+Route::delete('/$d_3c0mm3rc3/shop/{item}/delete', 'DashboardController@deleteItem')->name('deleteItem');

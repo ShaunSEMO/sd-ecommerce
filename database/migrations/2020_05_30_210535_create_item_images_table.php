@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSocialLinksTable extends Migration
+class CreateItemImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateSocialLinksTable extends Migration
      */
     public function up()
     {
-        Schema::create('social_links', function (Blueprint $table) {
+        Schema::create('item_images', function (Blueprint $table) {
             $table->id();
-            $table->string('platform');
-            $table->string('link');
+            $table->text('image');
+            $table->integer('item_id');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateSocialLinksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('social_links');
+        Schema::dropIfExists('item_images');
     }
 }
